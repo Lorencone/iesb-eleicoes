@@ -1,5 +1,6 @@
-<pre>
 <?php
+
+session_start();
 include_once 'Usuario.php';
 
 $usuario = new usuario();

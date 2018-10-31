@@ -1,3 +1,16 @@
+<?php
+
+//    session_start();
+//    include_once '../usuario/Usuario.php';
+//
+//    $possuiAcesso = (new Usuario())->possuiAcesso();
+//
+//    if (!$possuiAcesso){
+//        header('location: ../usuario/login.php');
+//    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

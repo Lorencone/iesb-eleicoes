@@ -94,6 +94,8 @@ class Pagina
         $id_pagina = $conexao->executar($sql);
 
         $this->vincularPerfil($id_pagina, $dados);
+//
+//        print_r();
 
         return $id_pagina;
     }
@@ -110,7 +112,7 @@ class Pagina
 
                 $aDados = [
                     'id_pagina' => $id_pagina,
-                    'id_perfil' => $perfil,
+                    'id_perfil' => $perfil
                 ];
 
                 $permissao->inserir($aDados);
@@ -133,7 +135,12 @@ class Pagina
                   caminho = '$caminho',
                   publica = '$publica'
                 where id_pagina = '$id_pagina'";
-        return $conexao->executar($sql);
+
+        $id_pagina = $conexao->executar($sql);
+
+        $this->vincularPerfil($id_pagina, $dados);
+
+        return $id_pagina;
     }
 
     public function excluir($id_pagina)

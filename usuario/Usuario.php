@@ -1,4 +1,3 @@
-<pre>
 <?php
 
 include_once '../Conexao.php';
@@ -126,7 +125,7 @@ class Usuario
     {
         $nome = $dados['nome'];
         $email = $dados['email'];
-        $senha = $dados['senha'];
+        $senha = md5($dados['senha']);
         $id_perfil = $dados['id_perfil'];
 
         $conexao = new Conexao();
@@ -182,9 +181,7 @@ class Usuario
 
         $conexao = new Conexao();
 
-
         $sql = "select * from usuario where email = '$email' and senha = '$senha'";
-
 
         $dados = $conexao->recuperarDados($sql);
 
@@ -193,12 +190,55 @@ class Usuario
 //        print_r($dados);
 
         if (count($dados)){
-            $nome = $dados[0]['nome'];
-            print_r($nome);
-        }
-            die;
 
+            $_SESSION['usuario']['id_usuario'] = $dados[0]['id_usuario'];
+            $_SESSION['usuario']['nome'] = $dados[0]['nome'];
+            $_SESSION['usuario']['email'] = $dados[0]['email'];
+            $_SESSION['usuario']['id_perfil'] = $dados[0]['id_perfil'];
+
+//            $nome = $dados[0]['nome'];
+//            print_r($nome);
+        }
+
+//        die;
 
         return $conexao->executar($sql);
+    }
+
+    public function possuiAcesso()
+    {
+        $raizUrl = '/php/iesb-eleicoes/';
+        $url = $_SERVER['REQUEST_URI'];
+
+        $sql = "select *from pagina where publica = 1";
+
+        $conexao = new Conexao();
+        $paginas = $conexao->recuperarDados($sql);
+
+        foreach ($paginas as $pagina){
+            if ($url == $raizUrl . $pagina['caminho']){
+                return true;
+            }
+        }
+
+        if (!empty($_SESSION['usuario']['id_usuario'])){
+
+            $perfil = $_SESSION['usuario']['id_perfil'];
+
+            $sql = "select * from permissao pe
+                      inner join pagina pa on pa.id_pagina = pe.id_pagina
+                    where id_perfil = $perfil";
+
+            $paginas = $conexao->recuperarDados($sql);
+
+            foreach ($paginas as $pagina){
+                if ($url == $raizUrl . $pagina['caminho']){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
     }
 }
