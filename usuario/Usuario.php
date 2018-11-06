@@ -239,6 +239,10 @@ class Usuario
         }
 
         return false;
+    }
 
+    public function deslogar(){
+
+        unset($_SESSION['usuario']);
     }
 }

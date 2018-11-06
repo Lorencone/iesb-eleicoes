@@ -1,14 +1,12 @@
 <?php
+    session_start();
+    include_once '../usuario/Usuario.php';
 
-//    session_start();
-//    include_once '../usuario/Usuario.php';
-//
-//    $possuiAcesso = (new Usuario())->possuiAcesso();
-//
-//    if (!$possuiAcesso){
-//        header('location: ../usuario/login.php');
-//    }
+    $possuiAcesso = (new Usuario())->possuiAcesso();
 
+    if (!$possuiAcesso){
+        header('location: ../usuario/login.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +43,9 @@
 </head>
 
 <body id="mimin" class="dashboard">
+
+<?php if (!empty($_SESSION['usuario'])) { ?>
+
 <!-- start: Header -->
 <nav class="navbar navbar-default header navbar-fixed-top">
     <div class="col-md-12 nav-wrapper">
@@ -72,24 +73,8 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right user-nav">
-                <li class="user-name"><span>Akihiko Avaron</span></li>
-                <li class="dropdown avatar-dropdown">
-                    <img src="../tema/asset/img/avatar.jpg" class="img-circle avatar" alt="user name"
-                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
-                    <ul class="dropdown-menu user-dropdown">
-                        <li><a href="#"><span class="fa fa-user"></span> My Profile</a></li>
-                        <li><a href="#"><span class="fa fa-calendar"></span> My Calendar</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="more">
-                            <ul>
-                                <li><a href=""><span class="fa fa-cogs"></span></a></li>
-                                <li><a href=""><span class="fa fa-lock"></span></a></li>
-                                <li><a href=""><span class="fa fa-power-off "></span></a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#" class="opener-right-menu"><span class="fa fa-coffee"></span></a></li>
+                <li class="user-name"><span><?= $_SESSION['usuario']['nome'];?></span></li>
+                <li><a title="Sair" href="../usuario/processamento.php?acao=deslogar" class="opener-right-menu"><span class="fa fa-sign-out"></span></a></li>
             </ul>
         </div>
     </div>
@@ -144,7 +129,7 @@
     </div>
     <!-- end: Left Menu -->
 
-
     <!-- start: content -->
     <div id="content">
 
+<?php }?>

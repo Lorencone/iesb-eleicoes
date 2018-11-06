@@ -14,7 +14,7 @@
     <schema id="3" parent="1" name="eleicoes">
       <Current>1</Current>
       <Visible>1</Visible>
-      <Collation>utf8_general_ci</Collation>
+      <Collation>utf8_bin</Collation>
     </schema>
     <schema id="4" parent="1" name="information_schema">
       <Collation>utf8_general_ci</Collation>
@@ -967,17 +967,39 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="243" parent="3" name="candidato"/>
-    <table id="244" parent="3" name="cargo"/>
-    <table id="245" parent="3" name="eleitor"/>
-    <table id="246" parent="3" name="municipio"/>
-    <table id="247" parent="3" name="pagina"/>
-    <table id="248" parent="3" name="partido"/>
-    <table id="249" parent="3" name="perfil"/>
-    <table id="250" parent="3" name="permissao"/>
-    <table id="251" parent="3" name="uf"/>
-    <table id="252" parent="3" name="usuario"/>
-    <table id="253" parent="3" name="voto"/>
+    <table id="243" parent="3" name="candidato">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="244" parent="3" name="cargo">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="245" parent="3" name="eleitor">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="246" parent="3" name="municipio">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="247" parent="3" name="pagina">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="248" parent="3" name="partido">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="249" parent="3" name="perfil">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="250" parent="3" name="permissao">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="251" parent="3" name="uf">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="252" parent="3" name="usuario">
+      <Collation>utf8_general_ci</Collation>
+    </table>
+    <table id="253" parent="3" name="voto">
+      <Collation>utf8_general_ci</Collation>
+    </table>
     <column id="254" parent="243" name="id_candidato">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>

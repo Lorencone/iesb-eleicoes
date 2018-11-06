@@ -21,6 +21,9 @@ switch ($_GET['acao']) {
     case 'logar':
         $usuario->logar($_POST);
         break;
+    case 'deslogar':
+        $usuario->deslogar();
+        break;
 }
 
 header('location: index.php');
