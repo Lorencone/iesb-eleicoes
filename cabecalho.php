@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once '../usuario/Usuario.php';
+    include_once '../perfil/Perfil.php';
 
     $possuiAcesso = (new Usuario())->possuiAcesso();
 
@@ -74,7 +75,7 @@
 
             <ul class="nav navbar-nav navbar-right user-nav">
                 <li class="user-name"><span><?= $_SESSION['usuario']['nome'];?></span></li>
-                <li><a title="Sair" href="../usuario/processamento.php?acao=deslogar" class="opener-right-menu"><span class="fa fa-sign-out"></span></a></li>
+                <li><a title="Sair" href="../usuario/processamento.php?acao=deslogar"><span class="fa fa-sign-out"></span></a></li>
             </ul>
         </div>
     </div>
